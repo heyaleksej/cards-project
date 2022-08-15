@@ -1,5 +1,4 @@
-import axios from 'axios';
-import {ProfileType} from "../../main/pages/Profile/profileReducer";
+import {ProfileType} from "../../main/pages/profile/profileReducer";
 import { instance } from '../instance/instance';
 
 

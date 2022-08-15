@@ -1,16 +1,16 @@
 import {AnyAction, applyMiddleware, combineReducers, createStore} from "redux";
 import thunk, {ThunkAction, ThunkDispatch} from "redux-thunk";
-import {LoginActionType, loginReducer} from "../main/pages/Login/loginReducer";
-import {page404Reducer} from "../main/pages/Page_404/page404Reducer";
-import {ProfileActionsType, profileReducer} from "../main/pages/Profile/profileReducer";
+import {LoginActionType, loginReducer} from "../main/pages/login/loginReducer";
+import {page404Reducer} from "../main/pages/page_404/page404Reducer";
+import {ProfileActionsType, profileReducer} from "../main/pages/profile/profileReducer";
 import {ForgotPasswordActionType, forgotPasswordReducer} from "../main/pages/fogotPassword/forgotPasswordReducer";
 import {ActionsForSetPasswordType, setPasswordReducer} from "../main/pages/setPassword/setPasswordReducer";
-import {RegisterActionType, registrationReducer} from "../main/pages/Registration/registrationReducer";
+import {RegisterActionType, registrationReducer} from "../main/pages/registration/registrationReducer";
 import {appReducer} from "./app-reducer";
-import {packsListReducer} from "../main/pages/Packs/packsListReducer";
-import {packsTableReducer} from "../main/pages/Packs/PacksTable/packsTableReducer";
-import {cardsNameReducer} from "../main/pages/Cards/cardsReducer";
-import {learnPackReducer} from "../main/pages/Packs/PacksTable/learnPack/learnPackReducer";
+import {packsListReducer} from "../main/pages/packs/packsListReducer";
+import {packsTableReducer} from "../main/pages/packs/PacksTable/packsTableReducer";
+import {cardsNameReducer} from "../main/pages/cards/cardsReducer";
+import {learnPackReducer} from "../main/pages/packs/PacksTable/learnPack/learnPackReducer";
 
 
 const reducers = combineReducers({

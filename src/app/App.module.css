@@ -1,5 +1,5 @@
 body {
-    padding: 0 60px 0 60px;
+    padding: 0 30px 0 30px;
     margin: 0;
     background: url('/../new/src/commonfiles/background48.png');
 }
@@ -7,8 +7,26 @@ body {
 .app {
  align-items: center;
 }
+
+.navLinkBottomBlock{
+    color: dimgrey;
+    padding: 7px;
+    text-decoration:none
+}
+
+.form {
+    margin-top: 20px;
+    padding: 10px;
+    flex-direction: column;
+    width: 305px;
+    border: 1px solid silver;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Параметры тени */
+    background: ghostwhite;
+
+}
 @media only screen and (min-width: 900px) {
     body {
-        padding: 0 200px 0 200px;
+        padding: 0 100px 0 100px;
     }
 }

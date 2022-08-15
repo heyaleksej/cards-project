@@ -4,12 +4,14 @@ import FormControl from "@mui/material/FormControl";
 import FormGroup from "@mui/material/FormGroup";
 import Button from "@mui/material/Button";
 import {NavLink} from "react-router-dom";
-import {PATH} from "../../Routes/Routes";
+import {PATH} from "../../routes/Routes";
 import {useAppDispatch, useAppSelector} from "../../../app/hooks";
 import {forgotPassTC} from "./forgotPasswordReducer";
 import {SendEmail} from "./sendEmail/SendEmail";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
+import s from "./../../../app/App.module.css";
+
 
 type RecoveryPasswordErrorType = {
     email?: string
@@ -53,10 +55,10 @@ const ForgotPassword = () => {
 
     return (
         <Grid container justifyContent={'center'} >
-            <Grid item justifyContent={'center'} sm={3}>
+            <Grid >
                 <form onSubmit={formik.handleSubmit} title="Forgot your password?">
                     <FormControl>
-                        <FormGroup>
+                        <FormGroup className={s.form}>
                             <h2 style={{textAlign: "center"}}>Recovery password</h2>
                             <TextField
                                 label="Email"
@@ -68,14 +70,14 @@ const ForgotPassword = () => {
                             {formik.touched.email && formik.errors.email &&
                                 <div style={{color: "red"}}>{formik.errors.email}</div>}
 
-                            <div style={{color: "grey"}}>Enter your email address and we will send you further
+                            <div className={s.navLinkBottomBlock}>Enter your email address and we will send you further
                                 instructions
                             </div>
-                            <Button variant={'contained'} color="secondary" type="submit"
+                            <Button variant={'contained'} color="success" type="submit"
                                     disabled={status === 'loading'}>Send
                                 instructions</Button>
-                            <div style={{color: "grey"}}>Did you remember your password?</div>
-                            <NavLink to={PATH.LOGIN} onClick={handleDisableClick}>Try logging in</NavLink>
+                            <div className={s.navLinkBottomBlock} style={{color: "grey"}}>Did you remember your password?</div>
+                            <NavLink className={s.navLinkBottomBlock} to={PATH.LOGIN} onClick={handleDisableClick}>Try logging in</NavLink>
                         </FormGroup>
                     </FormControl>
                 </form>

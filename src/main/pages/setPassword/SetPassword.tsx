@@ -1,15 +1,16 @@
 import {useFormik} from 'formik';
 import {useAppDispatch, useAppSelector} from "../../../app/hooks";
 import {Navigate, useParams} from "react-router-dom";
-import React, {useEffect} from "react";
+import React from "react";
 import FormControl from "@mui/material/FormControl";
 import FormGroup from "@mui/material/FormGroup";
 import Button from "@mui/material/Button";
-import {PATH} from "../../Routes/Routes";
+import {PATH} from "../../routes/Routes";
 import {updateNewPasswordTC} from "./setPasswordReducer";
-import {initializeAppTC} from "../../../app/app-reducer";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
+import s from "./../../../app/App.module.css";
+
 
 type SetPasswordErrorType = {
     password?: string
@@ -48,20 +49,16 @@ const SetPassword = () => {
         }
     });
 
-    useEffect(() => {
-        dispatch(initializeAppTC());
-    }, []);
-
     if (isUpdatePassword) {
         return <Navigate to={PATH.LOGIN}/>
     }
 
     return (
         <Grid container justifyContent={'center'}>
-            <Grid item justifyContent={'center'} sm={3}>
+            <Grid>
                 <form onSubmit={formik.handleSubmit} title="Create new password">
                     <FormControl variant="standard" sx={{height: '71px', width: '100%'}}>
-                        <FormGroup>
+                        <FormGroup className={s.form}>
                             <h2 style={{textAlign: "center"}}>Set new password</h2>
                             <TextField
                                 label="Password"
@@ -74,10 +71,10 @@ const SetPassword = () => {
                             {formik.touched.password && formik.errors.password &&
                                 <div style={{color: "red"}}>{formik.errors.password}</div>}
 
-                            <div style={{color: 'grey'}}>Create new password and we will send you further instructions
+                            <div className={s.navLinkBottomBlock}>Create new password and we will send you further instructions
                                 to email
                             </div>
-                            <Button variant={'contained'} color="secondary" type="submit"
+                            <Button variant={'contained'} color="success" type="submit"
                                     disabled={status === 'loading'}>
                                 Create new password</Button>
                         </FormGroup>
