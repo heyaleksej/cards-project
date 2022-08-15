@@ -1,0 +1,16 @@
+.forgotPassword{
+    padding: 7px;
+    text-decoration:none
+}
+
+.login {
+    margin-top: 20px;
+    padding: 10px;
+    flex-direction: column;
+    width: 305px;
+    border: 1px solid silver;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Параметры тени */
+    background: ghostwhite;
+
+}

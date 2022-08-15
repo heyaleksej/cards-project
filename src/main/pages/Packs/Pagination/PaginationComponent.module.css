@@ -1,0 +1,13 @@
+.group {
+    display: flex;
+    align-items: center;
+    background: white;
+
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}

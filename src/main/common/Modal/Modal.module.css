@@ -1,0 +1,72 @@
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(40, 44, 52, 0.8);
+  z-index: 1000;
+  padding: 10px;
+}
+
+.input {
+  width: auto;
+  height: 35px;
+  padding: 0 0 0 20px;
+  margin: 0 auto 20px;
+}
+
+
+
+.closeBtnWrapper {
+  cursor: pointer;
+  position: relative;
+  left: 155px;
+  top: -20px;
+}
+
+
+.modal {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: ghostwhite;
+  color: #000;
+  text-align: center;
+  border-radius: 20px;
+  padding: 20px 20px 20px 20px;
+  box-shadow: 0 0 10px rgb(22, 20, 24); /* Параметры тени */
+
+}
+
+.buttonClose {
+  width: 30px;
+  font-size: 20px;
+  color: #c0c5cb;
+  align-self: flex-end;
+  background-color: transparent;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.title {
+  margin-bottom: 40px;
+  font-size: 18px;
+}
+.buttonAccept {
+  background-color: #ed6755;
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  padding: 14px;
+  font-size: 16px;
+  color: white;
+}
+
+
+
+

@@ -1,0 +1,15 @@
+.span {
+    display: inline-block;
+    cursor: pointer;
+    color: #4ac730;
+    height: 56px;
+    padding-top: 10px;
+}
+
+.containerInput {
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+}
+
+

@@ -1,0 +1,19 @@
+.packsBox {
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Addbtn {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+    align-items: center;
+}
+
+.Addcardbtn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

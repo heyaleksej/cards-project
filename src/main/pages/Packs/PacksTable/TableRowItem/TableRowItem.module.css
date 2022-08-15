@@ -1,0 +1,10 @@
+.sell {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+.ButtonGroup {
+    display: flex;
+    flex-direction: row;
+}
