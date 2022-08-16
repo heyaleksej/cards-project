@@ -4,7 +4,7 @@ import {PATH} from "../routes/Routes";
 import style from './Header.module.css'
 import {useAppSelector} from "../../app/hooks";
 import { Avatar } from '@mui/material';
-import defaultAvatar from '../pages/profile/Sample_User_Icon.png'
+import defaultAvatar from '../common/img/Sample_User_Icon.png'
 import AppLogo from './../common/img/educational-flash-cards.png'
 
 

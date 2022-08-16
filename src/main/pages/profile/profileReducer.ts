@@ -42,6 +42,9 @@ export const profileReducer = (state: ProfileInitialStateType = initialState, ac
         }
         case SET_MY_ID:
             return {...state, myId: action.myId}
+        case SET_NEW_USER_AVATAR: {
+            return {...state, profile: {...state.profile, avatar: action.ava}}
+        }
 
         default:
             return state
@@ -52,10 +55,13 @@ export const profileReducer = (state: ProfileInitialStateType = initialState, ac
 export const setUserProfileAC = (profile: ProfileType) => ({type: SET_USER_PROFILE, profile} as const)
 export const setUserProfileNameAC = (name: string | null) => ({type: SET_NEW_USER_NAME, name} as const)
 export const setProfileIdAC = (myId: string | null) => ({type: SET_MY_ID, myId} as const)
+export const setUserProfileAvatarAC = (ava: any) => ({type: SET_NEW_USER_AVATAR, ava} as const)
 
 
 //thunks
-export const authMeTC:any = (): AppThunk  => (dispatch) => {
+
+
+export const authMeTC: any = (): AppThunk => (dispatch) => {
     dispatch(getStatusAC('loading'))
 
     return authApi.me()
@@ -76,22 +82,24 @@ export const authMeTC:any = (): AppThunk  => (dispatch) => {
         })
 }
 
-export const editProfileTC: any = (name:string): AppThunk => (dispatch) => {
+export const editProfileTC: any = (name: string, avatar?: string): AppThunk => (dispatch) => {
     dispatch(getStatusAC('loading'))
-    return profileAPI.updateProfile(name)
-        .then(() => {
-            dispatch(setUserProfileNameAC(name))
+
+    return profileAPI.updateProfile(name, avatar)
+        .then((data) => {
+            dispatch(setUserProfileNameAC(data.updatedUser.name))
+            dispatch(setUserProfileAvatarAC(data.updatedUser.avatar))
 
         })
         .catch((err: AxiosError<{ error: string }>) => {
-            const error = (err.response && err.response.data) ? err.response.data.error : err.message;
-            dispatch(setAppErrorAC(error));
+            console.log(err);
         })
         .finally(() => {
             dispatch(getStatusAC('succeeded'));
 
         })
 }
+
 
 export const logOutTC: any = () => (dispatch: Dispatch) => {
 
@@ -111,6 +119,7 @@ export const logOutTC: any = () => (dispatch: Dispatch) => {
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_NEW_USER_NAME = 'SET_NEW_USER_NAME'
 const SET_MY_ID = 'SET_MY_ID'
+const SET_NEW_USER_AVATAR = 'SET_NEW_USER_AVATAR'
 
 
 export type ProfileType = {
@@ -138,4 +147,5 @@ export type ProfileActionsType =
     | ReturnType<typeof setUserProfileAC>
     | ReturnType<typeof setUserProfileNameAC>
     | ReturnType<typeof setProfileIdAC>
+    | ReturnType<typeof setUserProfileAvatarAC>
 

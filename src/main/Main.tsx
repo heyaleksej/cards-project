@@ -14,7 +14,7 @@ const Main = () => {
             <HashRouter>
 
                 <Header/>
-                {status === 'loading' && <LinearProgress color="secondary" />}
+                {status === 'loading' && <LinearProgress sx={{overflowY: 'hidden', marginTop: '-4px', background:'seagreen'}} />}
                 <Routes/>
 
             </HashRouter>

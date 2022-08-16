@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    padding-top: 30px;
 }
 
 .profileBox {
@@ -14,6 +14,7 @@
     flex-direction: column;
     align-items: center;
     width: 300px;
+    min-height: 330px;
     border: 2px solid silver;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Параметры тени */
@@ -21,10 +22,19 @@
 
 }
 
+.editAvatarBtn {
+    position: absolute;
+    top: -30px;
+}
+
 .name {
     font-weight: 300;
     font-size: 25px;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0 0 0;
 }
 
 .userName {
@@ -38,6 +48,16 @@
 .avatar {
     width: 160px;
     border-radius: 10px;
+}
+
+.editModeImg {
+    width: 160px;
+    border-radius: 10px;
+    filter: contrast(40%)
+}
+
+.editAvatarBtn:hover {
+    color: whitesmoke;
 }
 
 

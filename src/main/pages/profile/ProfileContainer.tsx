@@ -18,13 +18,17 @@ export const ProfileContainer = () => {
 
     const logOutHandler = useCallback(() => {
         dispatch(logOutTC())
-    }, [])
+    }, [dispatch])
 
     const activateEditMode = useCallback((name: string | null) => {
         dispatch(editProfileTC(name))
     }, [dispatch])
 
-
+    const changeAvatar = useCallback((ava: any)=>{
+        debugger
+        const name = profile.name
+        dispatch(editProfileTC({name,ava}))
+    },[dispatch])
 
 
     if (!isLogin) {
@@ -34,7 +38,7 @@ export const ProfileContainer = () => {
 
     return (
         <div>
-            <Profile profile={profile} logOutHandler={logOutHandler} EditMode={activateEditMode} status={status}/>
+            <Profile profile={profile} logOutHandler={logOutHandler} EditMode={activateEditMode} status={status} changeAvatar={changeAvatar}/>
         </div>
     )
 }

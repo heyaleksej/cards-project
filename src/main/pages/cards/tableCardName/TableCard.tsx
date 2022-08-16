@@ -1,9 +1,9 @@
 import * as React from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import IconButton from '@mui/material/IconButton';
-import {addCardTC, setCardsPage, setCardsPageCount, setSearchQuestion} from './../../cards/cardsReducer';
+import {addCardTC, setCardsPage, setCardsPageCount, setSearchQuestion} from '../cardsReducer';
 import {useNavigate} from 'react-router-dom';
-import {TableContainerCards} from '../../cards/tableCardName/TableContainerCards';
+import {TableContainerCards} from './TableContainerCards';
 import {useAppDispatch, useAppSelector} from "../../../../app/hooks";
 import Button from '@mui/material/Button';
 import {ChangeEvent, useEffect, useState} from "react";
@@ -14,25 +14,16 @@ import useDebounce from "../../../utils/useDebounce";
 import { PaginationComponent } from '../../packs/Pagination/PaginationComponent';
 
 export const TableCard = () => {
-    const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch(), navigate = useNavigate(),
+        myId = useAppSelector(state => state.profile.profile._id), page = useAppSelector(state => state.cardPack.page),
+        totalCardsCount = useAppSelector(state => state.cardPack.cardsTotalCount),
+        pageCount = useAppSelector(state => state.cardPack.pageCount),
+        packName = useAppSelector(state => state.cardPack.name),
+        packUserId = useAppSelector(state => state.cardPack.packUserId),
+        cardsPackId = useAppSelector(state => state.cardPack.cardsPack_id),
+        status = useAppSelector(state => state.app.status), [value, setValue] = useState(''), [activeModal, setActiveModal] = useState<boolean>(false), [question, setQuestion] = useState<string>(''), [answer, setAnswer] = useState<string>(''),
+        debouncedValue = useDebounce<string>(value, 500);
 
-    const navigate = useNavigate();
-
-    const myId = useAppSelector(state => state.profile.profile._id)
-    const page = useAppSelector(state => state.cardPack.page);
-    const totalCardsCount = useAppSelector(state => state.cardPack.cardsTotalCount);
-    const pageCount = useAppSelector(state => state.cardPack.pageCount);
-    const packName = useAppSelector(state => state.cardPack.name);
-    const packUserId = useAppSelector(state => state.cardPack.packUserId);
-    const cardsPackId = useAppSelector(state => state.cardPack.cardsPack_id);
-    const status = useAppSelector(state => state.app.status);
-
-    const [value, setValue] = useState('');
-    const [activeModal, setActiveModal] = useState<boolean>(false)
-    const [question, setQuestion] = useState<string>('')
-    const [answer, setAnswer] = useState<string>('')
-
-    const debouncedValue = useDebounce<string>(value, 500);
 
     useEffect(() => {
         dispatch(setSearchQuestion(debouncedValue));
@@ -99,8 +90,6 @@ export const TableCard = () => {
                                            cardId={cardsPackId}
                                            packId={cardsPackId}
                 />}
-
-                {/*<h2>{shorter(packName, 50)}</h2>*/}
             </div>
             <Search value={value} callback={changeValueHandler}/>
             <TableContainerCards/>
