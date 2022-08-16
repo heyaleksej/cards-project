@@ -15,14 +15,18 @@ function Header() {
     const userName = useAppSelector(state => state.profile.profile.name)
     const ava = imgFromServer ? imgFromServer : defaultAvatar
 
+    const AppLogoHeader = () =>{
+        return <>
+            <img className={style.logo} src={AppLogo} alt={'logo'}/>
+            <h1 className={style.title}>Cards App</h1>
+        </>
+    }
+
     return (<>
             {!islogin
                 ? <header className={style.header}>
                 <ul className={style.header__list}>
-                    <>
-                        <img className={style.logo} src={AppLogo} alt={'logo'}/>
-                        <h1 className={style.title}>Cards App</h1>
-                    </>
+                    <AppLogoHeader/>
                     <li>
                         <NavLink to={PATH.REGISTRATION}>Registration</NavLink>
                     </li>
@@ -46,6 +50,8 @@ function Header() {
                 : <header className={style.header}>
                     <ul className={style.header__list}>
 
+                        <AppLogoHeader/>
+
                         <li>
                             <NavLink to={PATH.SET_PASSWORD}>Set password</NavLink>
                         </li>
@@ -60,7 +66,6 @@ function Header() {
                         </li>
                     </ul>
                 </header>
-
             }
         </>
     )

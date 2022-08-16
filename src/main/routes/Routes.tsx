@@ -7,7 +7,7 @@ import Login from "../pages/login/Login";
 import SetPassword from "../pages/setPassword/SetPassword";
 import {ProfileContainer} from "../pages/profile/ProfileContainer";
 import {PacksList} from "../pages/packs/PacksList/PacksList";
-import {TableCardName} from "../pages/cards/tableCardName/TableCardName";
+import {CardsList} from "../pages/cards/tableCardName/CardsList";
 import { LearnPack } from '../pages/packs/PacksTable/learnPack/LearnPack';
 
 export const PATH = {
@@ -35,7 +35,7 @@ function Pages() {
                 <Route path={PATH.FORGOT_PASSWORD} element={<ForgotPassword/>}/>
                 <Route path={PATH.SET_PASSWORD} element={<SetPassword/>}/>
                 <Route path={PATH.PACKS} element={<PacksList/>}/>
-                <Route path={PATH.CARDS + `/:id`} element={<TableCardName/>}/>
+                <Route path={PATH.CARDS + `/:id`} element={<CardsList/>}/>
                 <Route path={PATH.PAGE404} element={<Page404/>}/>
                 <Route path={'/*'} element={<Page404/>}/>
                 <Route path={PATH.LEARN_PACK} element={<LearnPack/>}/>

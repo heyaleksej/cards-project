@@ -141,8 +141,6 @@ export type ProfileInitialStateType = {
     error: string | null
     status: RequestStatusType
 }
-
-
 export type ProfileActionsType =
     | ReturnType<typeof setUserProfileAC>
     | ReturnType<typeof setUserProfileNameAC>

@@ -4,25 +4,27 @@ import styles from './PacksList.module.css';
 import {Navigate} from 'react-router-dom';
 import {PATH} from "../../../routes/Routes";
 import {useAppDispatch, useAppSelector} from "../../../../app/hooks";
-import {addPackTC, deletePackTC, fetchCardPacks, updatePackTC} from "../packsListReducer";
+import {deletePackTC, fetchCardPacks, updatePackTC} from "../packsListReducer";
 import {setProfileIdAC} from "../../profile/profileReducer";
 import {Packs} from "../Packs";
+import {setUserCardId, setUserCardName} from "../../cards/cardsReducer";
 
 
 export const PacksList = () => {
-    const dispatch = useAppDispatch();
-
-
-    const isLoggedIn = useAppSelector(state => state.login.isLogin);
-    const page = useAppSelector(state => state.tablePacks.page);
-    const pageCount = useAppSelector(state => state.tablePacks.pageCount);
-    const searchPackName = useAppSelector(state => state.tablePacks.packName);
-    const sortPackName = useAppSelector(state => state.tablePacks.sortPacks);
-    const commonUserId = useAppSelector(state => state.tablePacks.user_id);
-    const commonMin = useAppSelector(state => state.tablePacks.min);
-    const commonMax = useAppSelector(state => state.tablePacks.max);
-    const myId = useAppSelector(state => state.profile.profile._id)
-    const status = useAppSelector(state => state.app.status)
+    const dispatch = useAppDispatch(),
+        isLoggedIn = useAppSelector(state => state.login.isLogin),
+        page = useAppSelector(state => state.tablePacks.page),
+        pageCount = useAppSelector(state => state.tablePacks.pageCount),
+        searchPackName = useAppSelector(state => state.tablePacks.packName),
+        sortPackName = useAppSelector(state => state.tablePacks.sortPacks),
+        commonUserId = useAppSelector(state => state.tablePacks.user_id),
+        commonMin = useAppSelector(state => state.tablePacks.min),
+        commonMax = useAppSelector(state => state.tablePacks.max),
+        packId = useAppSelector(state => state.cardPack.cardsPack_id),
+        myId = useAppSelector(state => state.profile.profile._id),
+        status = useAppSelector(state => state.app.status),
+        cardPacks = useAppSelector(state => state.packList.cardPacks),
+        totalCardsCount = useAppSelector(state => state.packList.cardPacksTotalCount);
 
 
     useEffect(() => {
@@ -43,19 +45,12 @@ export const PacksList = () => {
         dispatch(fetchCardPacks())
     }
 
-    const addPackHandler = () => {
-        dispatch(addPackTC('newPack'))
+    const updatePack = (packId: string, value: string) => dispatch(updatePackTC(packId, value))
+    const deletePack = (packId: string) => dispatch(deletePackTC(packId))
+    const SendPackId = (_id: string, name: string) => {
+        dispatch(setUserCardId(_id));
+        dispatch(setUserCardName(name))
     }
-
-    const deletePack = (title: string) => {
-        dispatch(deletePackTC(title))
-
-    }
-    const changeName = (packId: string) => {
-        dispatch(updatePackTC(packId, '!newPackName!'))
-    }
-
-
 
 
     return (
@@ -64,11 +59,15 @@ export const PacksList = () => {
             <Packs status={status}
                    getAllPacks={getAllPacks}
                    getOnlyMyPacks={getOnlyMyPacks}
-                   addPackHandler={addPackHandler}
-                   deletePack={deletePack}
-                   changeName={changeName}/>
-
+                   myId={myId}
+                   packId={packId}
+                   cardPacks={cardPacks}
+                   totalCardsCount={totalCardsCount}
+                   page={page}
+                   pageCount={pageCount}
+                   updatePack={updatePack}
+                   SendPackId={SendPackId}
+                   deletePack={deletePack}/>
         </div>
-
     )
 };

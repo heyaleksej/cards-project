@@ -2,12 +2,12 @@ import * as React from 'react';
 import {useEffect} from 'react';
 import styles from './tableCardName.module.css';
 import {fetchCardsTC} from "../cardsReducer";
-import {TableCard} from "./TableCard";
 import {Navigate} from "react-router-dom";
 import {PATH} from "../../../routes/Routes";
 import {useAppDispatch, useAppSelector} from "../../../../app/hooks";
+import {Cards} from "./Cards";
 
-export const TableCardName = () => {
+export const CardsList = () => {
 	const dispatch = useAppDispatch();
 
 	const isLoggedIn = useAppSelector(state => state.login.isLogin);
@@ -21,7 +21,6 @@ export const TableCardName = () => {
 	const maxCards = useAppSelector(state => state.cardPack.max);
 
 	useEffect(() => {
-		console.log('cpid', cardsPack_id)
 		if (cardsPack_id) {
 			dispatch(fetchCardsTC());
 		}
@@ -37,7 +36,7 @@ export const TableCardName = () => {
 
 	return (
 		<div className={styles.container}>
-			<TableCard/>
+			<Cards/>
 		</div>
 	)
 }

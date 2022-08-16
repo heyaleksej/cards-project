@@ -54,12 +54,9 @@ export const TableCardRow = ({question, answer, updated, grade, _id}: CardType) 
 
 
     return (
-        <>
             <TableRow>
                 <TableCell component="th" scope="row">
-                                        <span style={{display: 'inline-block', flex: '1 1 auto'}}>
-                                             {shorter(question, 50)}
-                                        </span>
+                   {shorter(question, 50)}
                 </TableCell>
                 <TableCell align="justify">{shorter(answer, 100)}</TableCell>
                 <TableCell align="justify">
@@ -77,7 +74,6 @@ export const TableCardRow = ({question, answer, updated, grade, _id}: CardType) 
                     />
                 </TableCell>
                 <TableCell align="center">
-                    <TableRow>
                         <IconButton onClick={() => setActiveModalDelete(true)}
                                     disabled={disabled}
                                     aria-label="delete"
@@ -109,10 +105,7 @@ export const TableCardRow = ({question, answer, updated, grade, _id}: CardType) 
                             addTextHandler={updateCard}
                             cardId={_id}
                             title='You can update this card'/>}
-                    </TableRow>
                 </TableCell>
             </TableRow>
-        </>
-
     )
 }

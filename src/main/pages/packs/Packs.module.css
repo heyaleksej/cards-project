@@ -5,7 +5,7 @@
     align-items: center;
 }
 
-.Addbtn {
+.AddBtn {
     display: flex;
     justify-content: space-between;
     padding-bottom: 30px;

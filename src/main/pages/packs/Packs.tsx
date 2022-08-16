@@ -6,59 +6,68 @@ import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import s from './Packs.module.css'
 import Stack from '@mui/material/Stack';
 import {ModalChangeData} from '../../common/Modal/ModalChangeData';
-import {useAppDispatch, useAppSelector} from "../../../app/hooks";
+import {useAppDispatch} from "../../../app/hooks";
 import {addPackTC} from "./packsListReducer";
 import {CardSlider} from "../../common/CardSlider/CardSlider";
+import { PackType } from '../../../api/cards&packsAPI/PacksAPI';
 
 type PacksPropsType = {
     status: RequestStatusType
     getAllPacks: () => void
     getOnlyMyPacks: () => void
-    addPackHandler: () => void
-    deletePack: (id: string) => void
-    changeName: (id: string) => void
+    myId: string | null
+    packId: string
+    cardPacks: PackType[]
+    totalCardsCount: number
+    page: number
+    pageCount: number
+    updatePack: (packId: string, value: string) => void
+    SendPackId:(_id: string, name: string )=>void
+    deletePack:(packId:string)=>void
+
 }
 
 export const Packs = (props: PacksPropsType) => {
+
+    const {packId, status, getAllPacks,
+        getOnlyMyPacks, myId, cardPacks,
+        totalCardsCount, page, pageCount,
+        SendPackId, updatePack, deletePack} = props;
+
+
     const dispatch = useAppDispatch()
     const [activeModal, setActiveModal] = useState<boolean>(false)
-    const packId = useAppSelector(state => state.cardPack.cardsPack_id);
     const [packName, setPackName] = useState<string>('')
 
 
-
     const onClickAddPackHandler = () => {
-        debugger
         dispatch(addPackTC(packName))
         closeModal()
     }
-
-    const closeModal = () => {
-        setActiveModal(false)
-    }
+    const openModalForm = () => setActiveModal(true)
+    const closeModal = () => setActiveModal(false)
     const onChangeTextHandler = (value: string) => setPackName(value)
 
 
     return (
         <div>
-            <span className={s.Addbtn}>
+            <span className={s.AddBtn}>
                 <div>
                     <Stack direction='row' spacing={2}>
-                    <Button color='success' variant="contained" onClick={props.getAllPacks}>All packs</Button>
-                    <Button color='success' variant="contained" onClick={props.getOnlyMyPacks}>My packs</Button>
-                </Stack>
+                       <Button color='success' variant="contained" onClick={getAllPacks}>All packs</Button>
+                       <Button color='success' variant="contained" onClick={getOnlyMyPacks}>My packs</Button>
+                    </Stack>
                 </div>
                     <CardSlider/>
                 <div>
                     <Button color='success'
                             variant="contained"
                             startIcon={<LibraryAddIcon/>}
-                            onClick={() => {setActiveModal(true)}}
-                            disabled={props.status === 'loading'}>
+                            onClick={openModalForm}
+                            disabled={status === 'loading'}>
                         Add pack
                     </Button>
                 </div>
-
 
                 {activeModal && <ModalChangeData
                     packId={packId}
@@ -69,9 +78,16 @@ export const Packs = (props: PacksPropsType) => {
                     isAddingForm={true}
                     title='Please, enter the name of the pack'/>}
             </span>
-            <PacksTable/>
-
-
+            <PacksTable myId={myId}
+                        cardPacks={cardPacks}
+                        status={status}
+                        totalCardsCount={totalCardsCount}
+                        page={page}
+                        pageCount={pageCount}
+                        SendPackId={SendPackId}
+                        updatePack={updatePack}
+                        deletePack={deletePack}
+            />
         </div>
     )
 }

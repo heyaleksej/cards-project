@@ -10,7 +10,6 @@ const Main = () => {
     const status = useAppSelector(state => state.app.status)
 
     return (
-        <>
             <HashRouter>
 
                 <Header/>
@@ -18,7 +17,6 @@ const Main = () => {
                 <Routes/>
 
             </HashRouter>
-        </>
     )
 }
 

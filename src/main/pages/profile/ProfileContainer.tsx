@@ -25,7 +25,6 @@ export const ProfileContainer = () => {
     }, [dispatch])
 
     const changeAvatar = useCallback((ava: any)=>{
-        debugger
         const name = profile.name
         dispatch(editProfileTC({name,ava}))
     },[dispatch])

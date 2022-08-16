@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/cards-project/static/css/main.871793c0.css",
-    "main.js": "/cards-project/static/js/main.1d7e5e47.js",
+    "main.css": "/cards-project/static/css/main.b664a96a.css",
+    "main.js": "/cards-project/static/js/main.898ea749.js",
     "static/js/787.ec78c698.chunk.js": "/cards-project/static/js/787.ec78c698.chunk.js",
     "static/media/educational-flash-cards.png": "/cards-project/static/media/educational-flash-cards.37d23064f323454a8e2c.png",
     "index.html": "/cards-project/index.html",
-    "main.871793c0.css.map": "/cards-project/static/css/main.871793c0.css.map",
-    "main.1d7e5e47.js.map": "/cards-project/static/js/main.1d7e5e47.js.map",
+    "main.b664a96a.css.map": "/cards-project/static/css/main.b664a96a.css.map",
+    "main.898ea749.js.map": "/cards-project/static/js/main.898ea749.js.map",
     "787.ec78c698.chunk.js.map": "/cards-project/static/js/787.ec78c698.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.871793c0.css",
-    "static/js/main.1d7e5e47.js"
+    "static/css/main.b664a96a.css",
+    "static/js/main.898ea749.js"
   ]
 }
