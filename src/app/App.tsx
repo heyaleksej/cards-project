@@ -25,7 +25,7 @@ const App = () => {
                 position: 'absolute',
                 top: '50%',
                 left: '50%',
-                marginRight: '-50%',
+                margin: '0 -30px 0 -30px',
                 transform: 'translate(-50%, -50%)'}} />
         </div>
     }

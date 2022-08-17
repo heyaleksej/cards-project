@@ -5,15 +5,18 @@
     align-items: center;
 }
 
-.AddBtn {
+.addBtn {
     display: flex;
     justify-content: space-between;
     padding-bottom: 30px;
     align-items: center;
 }
 
-.Addcardbtn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+@media only screen and (max-width: 900px) {
+    .adвBtn {
+        display: table-column;
+        align-items: center;
+        width: 20px;
+    }
 }

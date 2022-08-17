@@ -1,6 +1,4 @@
 body {
-    padding: 0 30px 0 30px;
-    margin: 0;
     background: url('/../new/src/commonfiles/background48.png');
 
 
@@ -28,8 +26,8 @@ body {
     background: ghostwhite;
 
 }
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1100px)  {
     body {
-        padding: 0 100px 0 100px;
+        padding: 0 240px 0 240px;
     }
 }

@@ -3,6 +3,18 @@
     padding: 20px !important;
     font-size: 20px !important;
 }
+
 .search {
     width: 400px;
+}
+
+.sortSelect {
+    width: 100%;
+    text-align: right !important;
+
+}
+
+.searchWrap {
+    display: flex;
+    width: 100%;
 }

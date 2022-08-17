@@ -6,18 +6,18 @@ import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import TableSortLabel from '@mui/material/TableSortLabel';
 import Paper from '@mui/material/Paper';
 import TableCell from "@mui/material/TableCell";
 import {TableRowItem} from "./TableRowItem/TableRowItem";
 import {setCardsPageCount, setPage, setSearchPackName, setSortPackName} from "./packsTableReducer";
 import {PaginationComponent} from "../Pagination/PaginationComponent";
 import {Search} from '../../../common/Search/Search';
+import {SortSelect} from '../../../common/SortSelect/SortSelect';
 import useDebounce from "../../../utils/useDebounce";
 import {RequestStatusType} from "../../../../app/app-reducer";
 import {PackType} from "../../../../api/cards&packsAPI/PacksAPI";
 
-type PacksTablePropsType ={
+type PacksTablePropsType = {
     myId: string | null
     status: RequestStatusType
     cardPacks: PackType[]
@@ -25,12 +25,22 @@ type PacksTablePropsType ={
     page: number
     pageCount: number
     updatePack: (packId: string, value: string) => void
-    SendPackId:(_id: string, name: string )=>void
-    deletePack:(packId:string)=>void
+    SendPackId: (_id: string, name: string) => void
+    deletePack: (packId: string) => void
 
 }
 
-const PacksTable = ({myId, status, cardPacks, totalCardsCount, page, pageCount, updatePack, SendPackId, deletePack}: PacksTablePropsType) => {
+const PacksTable = ({
+                        myId,
+                        status,
+                        cardPacks,
+                        totalCardsCount,
+                        page,
+                        pageCount,
+                        updatePack,
+                        SendPackId,
+                        deletePack
+                    }: PacksTablePropsType) => {
 
 
     const [value, setValue] = useState('');
@@ -59,11 +69,16 @@ const PacksTable = ({myId, status, cardPacks, totalCardsCount, page, pageCount, 
         updated && dispatch(setSortPackName(updated));
     }
 
+
+
     return (
         <Paper elevation={3} style={{background: 'rgba(255, 255, 255, 0.7)'}}>
-            <div className={styles.search}>
-                <Search value={value} callback={handleChangeValue}/>
-            </div>
+            <span className={styles.searchWrap}>
+                <div className={styles.search}>
+                    <Search value={value} callback={handleChangeValue}/>
+                </div>
+                <SortSelect handleSortUpdated={handleSortUpdated} handleCardsCount={handleCardsCount}/>
+            </span>
             <TableContainer>
                 <Table>
                     <TableHead>
@@ -72,23 +87,9 @@ const PacksTable = ({myId, status, cardPacks, totalCardsCount, page, pageCount, 
                                 <b>Name</b>
                             </TableCell>
                             <TableCell align="center">
-                                <TableSortLabel
-                                    active={true}
-                                    disabled={status === 'loading'}
-                                    direction={cardsCount === '1cardsCount' ? 'asc' : 'desc'}
-                                    onClick={handleCardsCount}
-                                >
-                                </TableSortLabel>
                                 <b>Cards</b>
                             </TableCell>
                             <TableCell align="center">
-                                <TableSortLabel
-                                    active={true}
-                                    disabled={status === 'loading'}
-                                    direction={updated === '0updated' ? 'asc' : 'desc'}
-                                    onClick={handleSortUpdated}
-                                >
-                                </TableSortLabel>
                                 <b>Last Updated</b>
                             </TableCell>
                             <TableCell align="center">

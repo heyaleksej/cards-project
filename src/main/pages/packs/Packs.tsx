@@ -51,7 +51,7 @@ export const Packs = (props: PacksPropsType) => {
 
     return (
         <div>
-            <span className={s.AddBtn}>
+            <span className={s.addBtn}>
                 <div>
                     <Stack direction='row' spacing={2}>
                        <Button color='success' variant="contained" onClick={getAllPacks}>All packs</Button>
