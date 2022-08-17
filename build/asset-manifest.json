@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/cards-project/static/css/main.b664a96a.css",
-    "main.js": "/cards-project/static/js/main.898ea749.js",
+    "main.css": "/cards-project/static/css/main.60c44824.css",
+    "main.js": "/cards-project/static/js/main.84997925.js",
     "static/js/787.ec78c698.chunk.js": "/cards-project/static/js/787.ec78c698.chunk.js",
     "static/media/educational-flash-cards.png": "/cards-project/static/media/educational-flash-cards.37d23064f323454a8e2c.png",
     "index.html": "/cards-project/index.html",
-    "main.b664a96a.css.map": "/cards-project/static/css/main.b664a96a.css.map",
-    "main.898ea749.js.map": "/cards-project/static/js/main.898ea749.js.map",
+    "main.60c44824.css.map": "/cards-project/static/css/main.60c44824.css.map",
+    "main.84997925.js.map": "/cards-project/static/js/main.84997925.js.map",
     "787.ec78c698.chunk.js.map": "/cards-project/static/js/787.ec78c698.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b664a96a.css",
-    "static/js/main.898ea749.js"
+    "static/css/main.60c44824.css",
+    "static/js/main.84997925.js"
   ]
 }

@@ -56,7 +56,7 @@ export const ModalCard: FC<PropsType> = ({
 
 
     return (
-        <div className={s.wrapper} onClick={closeModal} onKeyUp={onKeyPressHandler}>
+        <div className={`${s.wrapper} ${s.animation}`} onClick={closeModal} onKeyUp={onKeyPressHandler}>
             <div className={s.modal} onClick={e => {e.stopPropagation()}}>
                 <div className={s.closeBtnWrapper}>
                     <Button className={s.buttonClose} onClick={closeModal} size="large">

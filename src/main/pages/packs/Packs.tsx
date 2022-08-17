@@ -6,8 +6,6 @@ import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import s from './Packs.module.css'
 import Stack from '@mui/material/Stack';
 import {ModalChangeData} from '../../common/Modal/ModalChangeData';
-import {useAppDispatch} from "../../../app/hooks";
-import {addPackTC} from "./packsListReducer";
 import {CardSlider} from "../../common/CardSlider/CardSlider";
 import { PackType } from '../../../api/cards&packsAPI/PacksAPI';
 
@@ -24,24 +22,24 @@ type PacksPropsType = {
     updatePack: (packId: string, value: string) => void
     SendPackId:(_id: string, name: string )=>void
     deletePack:(packId:string)=>void
+    addPack:(packName:string)=>void
 
 }
 
-export const Packs = (props: PacksPropsType) => {
+export const Packs = React.memo((props: PacksPropsType) => {
 
     const {packId, status, getAllPacks,
         getOnlyMyPacks, myId, cardPacks,
         totalCardsCount, page, pageCount,
-        SendPackId, updatePack, deletePack} = props;
+        SendPackId, updatePack, deletePack, addPack} = props;
 
 
-    const dispatch = useAppDispatch()
     const [activeModal, setActiveModal] = useState<boolean>(false)
     const [packName, setPackName] = useState<string>('')
 
 
     const onClickAddPackHandler = () => {
-        dispatch(addPackTC(packName))
+        addPack(packName)
         closeModal()
     }
     const openModalForm = () => setActiveModal(true)
@@ -90,4 +88,4 @@ export const Packs = (props: PacksPropsType) => {
             />
         </div>
     )
-}
+})

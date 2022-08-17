@@ -8,7 +8,7 @@ type SelectPropsType = {
     handleCardsCount?: () => void
 }
 
-export const SortSelect = ({handleSortUpdated, handleCardsCount}: SelectPropsType) => {
+export const SortSelect = React.memo(({handleSortUpdated, handleCardsCount}: SelectPropsType) => {
 
 
     const [sort, setSort] = React.useState('');
@@ -64,4 +64,4 @@ export const SortSelect = ({handleSortUpdated, handleCardsCount}: SelectPropsTyp
             </FormControl>
         </div>
     </>
-}
+})

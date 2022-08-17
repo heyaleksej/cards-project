@@ -3,6 +3,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
 import React, {ChangeEvent} from "react";
 import {useAppSelector} from "../../../app/hooks";
+import s from './../../header/Header.module.css'
 
 type TableRowPackType = {
     value: string
@@ -17,7 +18,8 @@ export const Search = (props: TableRowPackType) => {
   return (
       <TextField
           fullWidth
-          sx={{backgroundColor: 'rgba(234,255,255,0.68)', border: 'none', width: '300px', margin:'10px'}}
+          className={s.search}
+          sx={{backgroundColor: 'rgba(234,255,255,0.68)', m: 1.3,}}
           size="small"
           placeholder="Search"
           disabled={status === 'loading'}

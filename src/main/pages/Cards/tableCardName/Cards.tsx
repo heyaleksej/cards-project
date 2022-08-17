@@ -46,7 +46,7 @@ export const Cards = () => {
     return (
         <div>
             <div>
-                <span className={st.Addcardbtn}>
+                <span className={st.addCardBtn}>
                         <IconButton disabled={status === 'loading'} onClick={onChangeNavigateHandler}>
                              <ArrowBackIcon fontSize='large'/>
                         </IconButton>

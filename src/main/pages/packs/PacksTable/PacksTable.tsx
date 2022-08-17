@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState} from 'react';
+import React, {ChangeEvent, memo, useEffect, useState} from 'react';
 import styles from './PacksTable.module.css';
 import {useAppDispatch} from "../../../../app/hooks";
 import Table from '@mui/material/Table';
@@ -30,7 +30,7 @@ type PacksTablePropsType = {
 
 }
 
-const PacksTable = ({
+const PacksTable = memo(({
                         myId,
                         status,
                         cardPacks,
@@ -143,6 +143,6 @@ const PacksTable = ({
             />
         </Paper>
     )
-};
+});
 
 export default PacksTable;

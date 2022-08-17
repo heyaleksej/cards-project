@@ -13,6 +13,8 @@ import {TableCardRow} from './TableCardRow';
 import {PaginationComponent} from "../../packs/Pagination/PaginationComponent";
 import {Search} from "../../../common/Search/Search";
 import useDebounce from "../../../utils/useDebounce";
+import {SortSelect} from "../../../common/SortSelect/SortSelect";
+import styles from "../../packs/PacksTable/PacksTable.module.css";
 
 export const CardsTable = () => {
 
@@ -50,9 +52,13 @@ export const CardsTable = () => {
 
     return (
         <Paper elevation={3} style={{background: 'rgba(255, 255, 255, 0.7)'}}>
-            <div>
-                <Search value={value} callback={changeValueHandler}/>
-            </div>
+            <span className={styles.searchWrap}>
+                <div className={styles.search}>
+                    <Search value={value} callback={changeValueHandler}/>
+                </div>
+                <SortSelect handleSortUpdated={handleSortUpdated}/>
+            </span>
+
             <TableContainer>
                 <Table>
                     <TableHead>

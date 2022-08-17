@@ -48,13 +48,9 @@ function Header() {
                 </ul>
             </header>
                 : <header className={style.header}>
-                    <ul className={style.header__list}>
+                    <ul className={style.headerListAuth}>
 
                         <AppLogoHeader/>
-
-                        <li>
-                            <NavLink to={PATH.SET_PASSWORD}>Set password</NavLink>
-                        </li>
 
                         <li>
                             <NavLink to={PATH.PACKS}>Packs</NavLink>

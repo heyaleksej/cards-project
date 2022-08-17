@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {useEffect} from 'react';
+import {useCallback, useEffect} from 'react';
 import styles from './PacksList.module.css';
 import {Navigate} from 'react-router-dom';
 import {PATH} from "../../../routes/Routes";
 import {useAppDispatch, useAppSelector} from "../../../../app/hooks";
-import {deletePackTC, fetchCardPacks, updatePackTC} from "../packsListReducer";
+import {addPackTC, deletePackTC, fetchCardPacks, updatePackTC} from "../packsListReducer";
 import {setProfileIdAC} from "../../profile/profileReducer";
 import {Packs} from "../Packs";
 import {setUserCardId, setUserCardName} from "../../cards/cardsReducer";
@@ -27,32 +27,34 @@ export const PacksList = () => {
         totalCardsCount = useAppSelector(state => state.packList.cardPacksTotalCount);
 
 
+
     useEffect(() => {
         dispatch(fetchCardPacks());
     }, [page, pageCount, sortPackName, searchPackName, commonUserId, commonMin, commonMax]);
 
+
+
+    const getAllPacks = useCallback(() => {
+        dispatch(setProfileIdAC(null))
+        dispatch(fetchCardPacks())
+    }, [dispatch])
+
+    const getOnlyMyPacks = useCallback(() => {
+        dispatch(setProfileIdAC(myId))
+        dispatch(fetchCardPacks())
+    },[dispatch])
+
+    const updatePack = useCallback((packId: string, value: string) => dispatch(updatePackTC(packId, value)),[dispatch])
+    const deletePack = useCallback((packId: string) => dispatch(deletePackTC(packId)),[dispatch])
+    const addPack = useCallback((packName: string) => dispatch(addPackTC(packName)),[dispatch])
+    const SendPackId = useCallback((_id: string, name: string) => {
+        dispatch(setUserCardId(_id));
+        dispatch(setUserCardName(name))
+    },[dispatch])
+
     if (!isLoggedIn) {
         return <Navigate to={PATH.LOGIN}/>
     }
-
-    const getAllPacks = () => {
-        dispatch(setProfileIdAC(null))
-        dispatch(fetchCardPacks())
-    }
-
-    const getOnlyMyPacks = () => {
-        dispatch(setProfileIdAC(myId))
-        dispatch(fetchCardPacks())
-    }
-
-    const updatePack = (packId: string, value: string) => dispatch(updatePackTC(packId, value))
-    const deletePack = (packId: string) => dispatch(deletePackTC(packId))
-    const SendPackId = (_id: string, name: string) => {
-        dispatch(setUserCardId(_id));
-        dispatch(setUserCardName(name))
-    }
-
-
     return (
 
         <div className={styles.packsContainer}>
@@ -67,7 +69,8 @@ export const PacksList = () => {
                    pageCount={pageCount}
                    updatePack={updatePack}
                    SendPackId={SendPackId}
-                   deletePack={deletePack}/>
+                   deletePack={deletePack}
+                   addPack={addPack}/>
         </div>
     )
 };
