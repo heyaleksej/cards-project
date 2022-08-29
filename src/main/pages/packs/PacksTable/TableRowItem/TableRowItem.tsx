@@ -64,7 +64,7 @@ export const TableRowItem = memo((props: TableRowPackType) => {
             <TableCell component="th" scope="row" className={styles.sell}>
                 <span style={{display: 'inline-block', flex: '1 1 auto'}}>{shorter(name, 20)}</span>
                 <IconButton
-                    disabled={status === 'loading' || !cardsCount}
+                    disabled={status === 'loading'}
                     aria-label="expand row"
                     size="small"
                     onClick={SendPackIdHandler}

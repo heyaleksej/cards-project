@@ -2,7 +2,7 @@ import * as React from 'react';
 import {useCallback, useEffect} from 'react';
 import styles from './PacksList.module.css';
 import {Navigate} from 'react-router-dom';
-import {PATH} from "../../../routes/Routes";
+import {PATH} from "../../../routes/Pages";
 import {useAppDispatch, useAppSelector} from "../../../../app/hooks";
 import {addPackTC, deletePackTC, fetchCardPacks, updatePackTC} from "../packsListReducer";
 import {setProfileIdAC} from "../../profile/profileReducer";

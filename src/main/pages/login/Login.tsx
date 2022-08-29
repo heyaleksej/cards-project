@@ -9,7 +9,7 @@ import Button from '@mui/material/Button';
 import {useFormik} from "formik";
 import {useAppDispatch, useAppSelector} from "../../../app/hooks";
 import {Navigate, NavLink} from "react-router-dom";
-import {PATH} from "../../routes/Routes";
+import {PATH} from "../../routes/Pages";
 import s from './Login.module.css'
 import { requestLoginTC } from './loginReducer';
 

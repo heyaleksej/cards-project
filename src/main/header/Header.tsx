@@ -1,6 +1,6 @@
 import React from 'react'
 import {NavLink} from "react-router-dom";
-import {PATH} from "../routes/Routes";
+import {PATH} from "../routes/Pages";
 import style from './Header.module.css'
 import {useAppSelector} from "../../app/hooks";
 import { Avatar } from '@mui/material';

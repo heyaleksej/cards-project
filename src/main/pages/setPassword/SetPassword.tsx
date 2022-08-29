@@ -5,7 +5,7 @@ import React from "react";
 import FormControl from "@mui/material/FormControl";
 import FormGroup from "@mui/material/FormGroup";
 import Button from "@mui/material/Button";
-import {PATH} from "../../routes/Routes";
+import {PATH} from "../../routes/Pages";
 import {updateNewPasswordTC} from "./setPasswordReducer";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";

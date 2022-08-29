@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
 import {editProfileTC, logOutTC, ProfileType} from "./profileReducer";
 import {Navigate} from 'react-router-dom';
-import {PATH} from "../../routes/Routes";
+import {PATH} from "../../routes/Pages";
 import { RequestStatusType } from '../../../app/app-reducer';
 import Profile from './Profile';
 import {useAppDispatch, useAppSelector} from "../../../app/hooks";

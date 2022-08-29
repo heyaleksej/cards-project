@@ -4,7 +4,7 @@ import FormControl from "@mui/material/FormControl";
 import FormGroup from "@mui/material/FormGroup";
 import Button from "@mui/material/Button";
 import {NavLink} from "react-router-dom";
-import {PATH} from "../../routes/Routes";
+import {PATH} from "../../routes/Pages";
 import {useAppDispatch, useAppSelector} from "../../../app/hooks";
 import {forgotPassTC} from "./forgotPasswordReducer";
 import {SendEmail} from "./sendEmail/SendEmail";

@@ -3,7 +3,7 @@ import {useEffect} from 'react';
 import styles from './tableCardName.module.css';
 import {fetchCardsTC} from "../cardsReducer";
 import {Navigate} from "react-router-dom";
-import {PATH} from "../../../routes/Routes";
+import {PATH} from "../../../routes/Pages";
 import {useAppDispatch, useAppSelector} from "../../../../app/hooks";
 import {Cards} from "./Cards";
 

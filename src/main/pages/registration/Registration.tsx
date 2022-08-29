@@ -4,7 +4,7 @@ import FormControl from "@mui/material/FormControl";
 import {useFormik} from "formik";
 import React from "react";
 import Button from "@mui/material/Button";
-import {PATH} from "../../routes/Routes";
+import {PATH} from "../../routes/Pages";
 import {Navigate, NavLink} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../../app/hooks";
 import s from "./../../../app/App.module.css";
