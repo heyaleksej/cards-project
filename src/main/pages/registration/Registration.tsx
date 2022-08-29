@@ -20,9 +20,10 @@ type FormikErrorType = {
 const Registration = () => {
 
     const dispatch = useAppDispatch();
-
     const status = useAppSelector(state => state.app.status);
     const isLoggedIn = useAppSelector(state => state.login.isLogin)
+
+
 
     const formik = useFormik({
         initialValues: {
@@ -31,8 +32,6 @@ const Registration = () => {
             confirmPassword: ''
         },
         onSubmit: values => {
-            // dispatch(registrationTC(values))
-            // formik.resetForm();
             dispatch(registrationTC(values));
             formik.resetForm({values: {email: values.email, password: '', confirmPassword: ''}});
         },

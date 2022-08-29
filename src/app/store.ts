@@ -5,7 +5,7 @@ import {page404Reducer} from "../main/pages/page_404/page404Reducer";
 import {ProfileActionsType, profileReducer} from "../main/pages/profile/profileReducer";
 import {ForgotPasswordActionType, forgotPasswordReducer} from "../main/pages/fogotPassword/forgotPasswordReducer";
 import {ActionsForSetPasswordType, setPasswordReducer} from "../main/pages/setPassword/setPasswordReducer";
-import {RegisterActionType, registrationReducer} from "../main/pages/registration/registrationReducer";
+import {RegisterActionTypes, registrationReducer} from "../main/pages/registration/registrationReducer";
 import {appReducer} from "./app-reducer";
 import {packsListReducer} from "../main/pages/packs/packsListReducer";
 import {packsTableReducer} from "../main/pages/packs/PacksTable/packsTableReducer";
@@ -29,9 +29,12 @@ const reducers = combineReducers({
 
 const store = createStore(reducers, applyMiddleware(thunk))
 
-export type CommonActionTypeForApp = LoginActionType |
-    ForgotPasswordActionType | ActionsForSetPasswordType | ProfileActionsType
-    | RegisterActionType;
+export type CommonActionTypeForApp =
+    | LoginActionType
+    | ForgotPasswordActionType
+    | ActionsForSetPasswordType
+    | ProfileActionsType
+    | RegisterActionTypes;
 
 export type AppStoreType = ReturnType<typeof reducers>
 

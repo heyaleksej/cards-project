@@ -10,6 +10,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import EditSharpIcon from '@mui/icons-material/EditSharp';
 import {PhotoCamera} from "@material-ui/icons";
 import {useAppDispatch} from "../../../app/hooks";
+import {useNavigate} from "react-router-dom";
 
 
 type ProfilePropsType = {
@@ -23,7 +24,7 @@ type ProfilePropsType = {
 
 const Profile: React.FC<ProfilePropsType> = ({profile, logOutHandler, status}) => {
     const dispatch = useAppDispatch();
-
+    const navigate = useNavigate();
     const [editMode, setEditMode] = useState(false)
     const [name, setName] = useState(profile.name)
     const [newAvatar, setNewAvatar] = useState('');
@@ -41,6 +42,10 @@ const Profile: React.FC<ProfilePropsType> = ({profile, logOutHandler, status}) =
     }
 
     const ViewModeBlur = (e: any) => e.preventDefault()
+
+    const toPacks = () => {
+        navigate(`/packs`);
+    }
 
 
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => setName(e.currentTarget.value)
@@ -62,8 +67,9 @@ const Profile: React.FC<ProfilePropsType> = ({profile, logOutHandler, status}) =
     }
 
     const CardsMessage = profile.publicCardPacksCount === 0
-        ? `You don't have any cards yet`
-        : `Count cards you have is ${profile.publicCardPacksCount}`
+        ? `You don't have any cards yet.\n Create your own pack`
+        : `Pack's count you have is ${profile.publicCardPacksCount}.\n Go to learn or create another own pack.
+`
 
     const imgClassName = editMode ? `${s.editModeImg}` : `${s.avatar}`
 
@@ -114,7 +120,11 @@ const Profile: React.FC<ProfilePropsType> = ({profile, logOutHandler, status}) =
                 :
                 <>
                     <span className={s.name}>Hello, {profile.name}</span>
-                    <p>{CardsMessage}</p>
+                    <p className={s.message}>{CardsMessage}</p>
+
+                    <Button sx ={{marginBottom:'5%'}} onClick={toPacks} color='success' variant="contained">Packs</Button>
+
+
                 </>
             }
 

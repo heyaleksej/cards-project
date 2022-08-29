@@ -10,7 +10,6 @@ import {getCardsPack, setCardPack, updateGradePack} from './learnPackReducer';
 import {useAppDispatch, useAppSelector} from "../../../../../app/hooks";
 import {getCard} from "../../../../utils/smartRandom";
 import Button from "@mui/material/Button";
-import Paper from "@mui/material/Paper";
 import {CardType} from "./learnPackApi";
 
 const grades = [

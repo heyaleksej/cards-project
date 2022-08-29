@@ -37,6 +37,8 @@ export const Packs = React.memo((props: PacksPropsType) => {
     const [activeModal, setActiveModal] = useState<boolean>(false)
     const [packName, setPackName] = useState<string>('')
 
+    const disabled = status === "loading"
+
 
     const onClickAddPackHandler = () => {
         addPack(packName)
@@ -52,8 +54,8 @@ export const Packs = React.memo((props: PacksPropsType) => {
             <span className={s.addBtn}>
                 <div>
                     <Stack direction='row' spacing={2}>
-                       <Button color='success' variant="contained" onClick={getAllPacks}>All packs</Button>
-                       <Button color='success' variant="contained" onClick={getOnlyMyPacks}>My packs</Button>
+                       <Button color='success' variant="contained" onClick={getAllPacks} disabled={disabled}>All packs</Button>
+                       <Button color='success' variant="contained" onClick={getOnlyMyPacks} disabled={disabled}>My packs</Button>
                     </Stack>
                 </div>
                     <CardSlider/>
@@ -62,7 +64,7 @@ export const Packs = React.memo((props: PacksPropsType) => {
                             variant="contained"
                             startIcon={<LibraryAddIcon/>}
                             onClick={openModalForm}
-                            disabled={status === 'loading'}>
+                            disabled={disabled}>
                         Add pack
                     </Button>
                 </div>

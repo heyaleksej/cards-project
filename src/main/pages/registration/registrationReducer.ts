@@ -6,12 +6,17 @@ import {getStatusAC, setAppErrorAC} from "../../../app/app-reducer";
 
 const initialState: RegistrationStateType = {
     message: null,
+    isRegistration: false,
+
 };
 
-export const registrationReducer = (state: RegistrationStateType = initialState, action: RegisterActionType): RegistrationStateType => {
+export const registrationReducer = (state: RegistrationStateType = initialState, action: RegisterActionTypes): RegistrationStateType => {
     switch (action.type) {
         case 'REGISTRATION/SET-MESSAGE':
             return {...state, message: action.message};
+        case 'SIGN_UP':
+            return {...state, isRegistration:action.isRegistration}
+
         default:
             return state;
     }
@@ -19,6 +24,7 @@ export const registrationReducer = (state: RegistrationStateType = initialState,
 
 //AC
 export const setRegisterMessageAC = (message: string | null) => ({type: 'REGISTRATION/SET-MESSAGE', message} as const);
+export const isRegistrationAC = (isRegistration: boolean) => ({type: 'SIGN_UP', isRegistration} as const)
 
 //thunk
 export const registrationTC = (data: { email: string; password: string }): AppThunk =>
@@ -28,6 +34,7 @@ export const registrationTC = (data: { email: string; password: string }): AppTh
             .then((res) => {
                 if (res.data.addedUser) {
                     dispatch(setRegisterMessageAC('You have successfully registered'));
+                    dispatch(isRegistrationAC(true))
                 } else if (res.data.error) {
                     dispatch(setAppErrorAC(res.data.error));
                 } else {
@@ -53,6 +60,8 @@ export const registrationTC = (data: { email: string; password: string }): AppTh
 //types
 export type RegistrationStateType = {
     message: string | null
+    isRegistration: boolean
+
 }
-export type RegisterActionType = ReturnType<typeof setRegisterMessageAC>
+export type RegisterActionTypes = ReturnType<typeof setRegisterMessageAC> | ReturnType<typeof isRegistrationAC>
 

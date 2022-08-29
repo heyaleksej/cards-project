@@ -61,8 +61,7 @@ export const fetchCardPacks = (): AppThunk => (dispatch: Dispatch, getState: () 
         })
         .catch((e: AxiosError<{ error: string }>) => {
             const error = (e.response && e.response.data) ? e.response.data.error : e.message;
-            dispatch(setAppErrorAC(error));
-        })
+            console.log(error)        })
         .finally(() => {
             dispatch(getStatusAC('idle'));
         })

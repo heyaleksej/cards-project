@@ -98,7 +98,7 @@ export const CardsTable = () => {
                             />))
                             : (
                                 <TableRow>
-                                    <TableCell>Loading...</TableCell>
+                                    <TableCell>...</TableCell>
                                 </TableRow>)}
                     </TableBody>
                 </Table>

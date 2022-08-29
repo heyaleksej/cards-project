@@ -1,6 +1,5 @@
 import React from 'react'
 import {Navigate, Route, Routes} from "react-router-dom";
-import Registration from "../pages/registration/Registration";
 import Page404 from "../pages/page_404/Page404";
 import ForgotPassword from "../pages/fogotPassword/ForgotPassword";
 import Login from "../pages/login/Login";
@@ -9,6 +8,7 @@ import {ProfileContainer} from "../pages/profile/ProfileContainer";
 import {PacksList} from "../pages/packs/PacksList/PacksList";
 import {CardsList} from "../pages/cards/tableCardName/CardsList";
 import { LearnPack } from '../pages/packs/PacksTable/learnPack/LearnPack';
+import {RegContainer} from "../pages/registration/RegContainer";
 
 export const PATH = {
     REGISTRATION: '/register',
@@ -28,8 +28,7 @@ function Pages() {
     return (
             <Routes>
                 <Route path={'/'} element={<Navigate to={PATH.LOGIN}/>}/>
-
-                <Route path={PATH.REGISTRATION} element={<Registration/>}/>
+                <Route path={PATH.REGISTRATION} element={<RegContainer/>}/>
                 <Route path={PATH.LOGIN} element={<Login/>}/>
                 <Route path={PATH.PROFILE} element={<ProfileContainer/>}/> // profile container first
                 <Route path={PATH.FORGOT_PASSWORD} element={<ForgotPassword/>}/>
